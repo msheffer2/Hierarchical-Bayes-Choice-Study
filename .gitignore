@@ -3,9 +3,15 @@
 *.DS_Store
 
 #R files
-.Rproj.user
-.Rhistory
-.Ruserdata
+*.Rproj.user
+*.Rhistory
+*.Ruserdata
+*.Rproj
+*.html
+
+#Compressed files
+*.zip
+*.zipx
 
 # Office temporary
 ~$*.doc*
@@ -15,6 +21,8 @@
 
 #Other temporary
 *.tmp
-*.zip
-*.zipx
 *.bak
+
+#Excluding some data files due to file size limitations
+#7-zip versions of these files split into chunks of < 100 Mb are included in respository
+data/mod1.xz
