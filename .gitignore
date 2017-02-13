@@ -25,4 +25,4 @@
 
 #Excluding some data files due to file size limitations
 #7-zip versions of these files split into chunks of < 100 Mb are included in respository
-data/mod1.xz
+output/mod1.fit.xz
