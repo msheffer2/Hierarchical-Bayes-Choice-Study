@@ -1,0 +1,176 @@
+---
+title: "README"
+author: "Matthew Sheffer"
+date: "February 9, 2017"
+output: md_document
+tables: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Hierarchical Bayes Choice Study for New Product Assessment
+
+Background info
+
+### Analytical Highlights
+
+```{r, echo=FALSE, message=F, warning=F}
+library(dplyr)
+library(ggplot2)
+library(pander)
+```
+
+Possible intro
+
+#### Technincal Model Results
+
+##### TABLE TITLE
+```{r, results='asis', echo=FALSE}
+load("./output/utils1_dat.Rdata")
+pander(utils1_dat)
+```
+
+Explain the table
+
+#### Preferred Model Results
+
+##### TABLE TITLE
+```{r, results='asis', echo=FALSE}
+load("./output/utils2_dat.Rdata")
+pander(utils2_dat)
+```
+
+Explain the table
+
+##### PLOT TITLE
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+load("./output/utils2_bxp.Rdata")
+
+ggplot(utils2_bxp, aes(x=Price, y=Probability, color=Brand)) + 
+  geom_point(size=4) +
+  geom_line(size=2) + 
+  scale_y_continuous(limits=c(.05, .85), 
+                     breaks=c(seq(0, 1, .1)), 
+                     labels = scales::percent) +
+  scale_x_continuous(limits=c(199, 399), 
+                     breaks=c(199, 299, 399),
+                     labels= scales::dollar) + 
+  scale_colour_manual(values=c("red", "blue", "orange", "green")) + 
+  theme(text = element_text(size=15), 
+        panel.grid.minor=element_blank(),
+        panel.grid.major=element_blank())
+
+```
+
+Explain the plot
+
+#### Attribute Importance
+
+##### PLOT TITLE
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+load("./output/imp_dat.Rdata")
+
+colors <- c("red", "blue", "green", "purple", "orange")
+
+ggplot(imp_dat, aes(x=Attribute, y=Importance)) + 
+  geom_bar(stat="identity", color=colors, fill=colors) +
+  geom_text(aes(label=label), vjust=-1.5, color="black") +
+  scale_y_continuous(limits=c(0, .5), 
+                     breaks=c(seq(0, 1, .1)), 
+                     labels = scales::percent) +
+  theme(text = element_text(size=15), 
+        panel.grid.minor=element_blank(),
+        panel.grid.major=element_blank())
+```
+
+Explain the plot
+
+#### Part-worths Plot
+
+##### PLOT TITLE
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+load("./output/pw_dat.Rdata")
+
+colors <- c(as.character(pw_dat[pw_dat$PW<0,]$c),
+            as.character(pw_dat[pw_dat$PW>0,]$c))
+
+ggplot(pw_dat, aes(x=reorder(Attribute, -PW), y=PW)) + 
+  geom_bar(stat="identity", fill=colors) +
+  geom_text(y=pw_dat$label_pos, aes(label=label), vjust=-1.5, color="black") +
+  scale_y_continuous(limits=c(-.4, .4), 
+                     breaks=c(seq(-1, 1, .1)), 
+                     labels = scales::percent) +
+  theme(text = element_text(size=15), 
+        panel.grid.minor=element_blank(),
+        panel.grid.major=element_blank(),
+        axis.text.x = element_text(angle=90, hjust=1)) +
+  xlab("Attribute/Level") + ylab("Part-Worth")
+```
+
+Explain the plot
+
+#### Identifying the Optimal (and Sub-Optimal) Product Configurations
+
+##### TABLE TITLE
+```{r, results='asis', echo=FALSE}
+load("./output/top_bot.Rdata")
+top_ten <- top_bot[[1]]
+pander(top_ten)
+
+bot_ten <- top_bot[[2]]
+pander(bot_ten)
+```
+
+Explain the table
+
+#### Predicting Preference Share for Possible Market Scenarios
+
+##### TABLE TITLE
+```{r, results='asis', echo=FALSE}
+load("./output/scenarios.Rdata")
+scen1 <- scenarios[[1]]
+pander(scen1)
+
+scen2 <- scenarios[[2]]
+pander(scen2)
+```
+
+Explain the table
+
+### R syntax files I used to generate the material necessary for the report, including:
+* [1 - Codeup.R](https://github.com/msheffer2/Data-Science-Specialization/blob/master/01%20-%20Codeup.R) -- creates the datasets necessary for conducting the analysis, including the experimental design file and the raw data containing the product choices for respondents in the study.
+* [2 - Model.R](https://github.com/msheffer2/Data-Science-Specialization/blob/master/02%20-%20Building%20the%20DTM.R) -- the code to conduct the hierarchical Bayesian model, evaluate the model, validate the fit, and export the coefficients for later analysis.
+* [3 - Post Model Analytics.R](https://github.com/msheffer2/Data-Science-Specialization/blob/master/03%20-%20EDA.R) -- this syntax files takes the model coefficients and generates the graphs or datasets for the analytics presented in the readme file.
+
+#### Technical Notes:
+
+This section will describe two necessary steps when conducting a Hierarchical Baysian model:  
+* Looking for a stable region to pull the betas
+* Evaluating that the beta densities of the posterior are normal
+* Validating the model results
+
+#### Finding a stable region to pull the betas
+
+TEXT HERE
+
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+#PLOTS HERE
+```
+
+#### Evaluating beta densities
+
+TEXT HERE
+
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+#PLOTS HERE
+```
+
+#### Validating the model results
+
+TEXT HERE
+
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+#PLOTS HERE
+```
