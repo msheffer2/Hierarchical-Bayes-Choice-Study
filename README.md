@@ -10,10 +10,10 @@ unknown) and the specifics of the study (like the brands) have been
 masked so there isn't any chance of the data providing any market
 insights today.
 
-Originally, the purpose of the study was to identify the optimial new
+Originally, the purpose of the study was to identify the optimal new
 product configuration for a firm in the computer tablet market. Likely
 buyers of tablets participated in a marketing research study and where
-presented with an experimentally designed choice taks where they were
+presented with an experimentally designed choice tasks where they were
 asked to choose between a set of 3 possible products. The products on
 the choice "card" were described with several attributes, including the
 brand, screen size, amount of RAM, processor speed, and price.
@@ -60,7 +60,7 @@ as an example of what should be done for this type of question.
     outputs for my internal clients. Often, my materials are
     post-processed by other team members to make more polished outputs
     for reporting; in most cases, the critical outputs tend to be the
-    future market scenarios and the identificiation of the optimal
+    future market scenarios and the identification of the optimal
     product configurations.
 -   I was originally going to produce outputs in this notes section to
     show some of diagnostic steps of performing a Hierarchical Bayesian
@@ -79,13 +79,13 @@ Respondents in this dataset were presented with 36 different scenarios,
 each containing product descriptions of 3 tablets to choose from. For
 each scenario, the respondent was to choose one of the available
 options. From this type of data, it's possible to model preference for
-the specific features or attirubes varied in the experimental design
+the specific features or attributes varied in the experimental design
 (the framework that established what product configurations are seen in
 each scenario). It is appropriate to model discrete choice data, like
 the data that comes from this piece of research, using a type of logit
-model. In this case, I'm performed a Hiearchcial Bayes Logit model. In
+model. In this case, I'm performed a Hierarchical Bayes Logit model. In
 my work, I have tended to prefer Bayesian models to aggregate models in
-these situatiosn because they have been shown to be quite good at
+these situations because they have been shown to be quite good at
 recovering coefficients that reflect influencers of choice and they
 provide individual-level coefficients that can more accurately capture
 individual-level heterogeneity in decision-making processes.
@@ -263,12 +263,13 @@ in odds. These types of outputs are fine for the data scientist but I
 rarely prepare this type of output for a client (either internal or
 external). Since logit coefficients are in fact log odds ratios that
 describe changes in the log-odds of a product being chosen, they lack
-the intuitive understanding I preferr to use when describing model
+the intuitive understanding I prefer to use when describing model
 results. Efforts to convert the log odds ratio into more easily
 understandable items like odds rations or percent change in the odds are
-also, in my opinion, not inuitive. So while I might look at results like
-this, along with other measure of model performance, I tend to prefer a
-different type of output when describing model outputs to others.
+also, in my opinion, not intuitive. So while I might look at results
+like this, along with other measure of model performance, I tend to
+prefer a different type of output when describing model outputs to
+others.
 
 #### Preferred Model Results
 
@@ -376,7 +377,7 @@ different type of output when describing model outputs to others.
 Instead of relying on coefficient outputs like those found in Table 1, I
 instead run simulations from the model that looks at every possible
 combination of products that can be described by the attributes and
-levels. I then calculate the probabilty that a product would be chosen
+levels. I then calculate the probability that a product would be chosen
 out of a set of 3 typical products, on average when each attribute is
 varied (and holding all other features constant).
 
@@ -389,18 +390,18 @@ has about a 40% chance of being chosen, on average, but a 10 inch screen
 table has a 48% probability of being chosen. This indicates that 10 inch
 screens are more preferable to 5 inch screen, on average, by about 8%.
 
-The data in Table 2 is a bit more inuitive and, although I'm showing it
+The data in Table 2 is a bit more intuitive and, although I'm showing it
 in tabular format here, it can be more easily plotted in a variety of
 ways. Also note that the model includes an interaction between price and
 brand that was shown in Table 1. In table 2, I've chosen to show the
-main effects only and to treat the interaction seprately.
+main effects only and to treat the interaction separately.
 
 ##### Figure 1: Interaction of Price & Brand on Probability a Product Will Be Chosen
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
-It's common in some markets, and in consumer electronics particuarly, to
-expect that price sensitivity for products will not be uniform across
+It's common in some markets, and in consumer electronics particularly,
+to expect that price sensitivity for products will not be uniform across
 the brands. In other words, some brands are able to carry a price
 premium simply because of its brand equity while others might only ever
 be seen as a commodity brand that is penalized strongly for a higher
@@ -411,10 +412,10 @@ over the range of prices and brands chosen. If there were no affect of
 brand on price, then the lines for the 4 brand would be parallel as
 price increases. This isn't the case, however. At lower prices, Brands A
 and C have a premium over Brands B and D, which are almost
-interchangable with each other. As prices increase, however, the effect
+interchangeable with each other. As prices increase, however, the effect
 of brand starts to diminish to the point where only a small premium is
 acceptable from Brands A and C at the highest price assessed. In fact,
-at $399, almost all 4 brands become more "replacable" with each other.
+at $399, almost all 4 brands become more "replaceable" with each other.
 
 It's also notable, though, that any brand at a lower price point has a
 higher probability of being chosen than any brand at a higher price
@@ -445,15 +446,15 @@ variation (in choice) that can be explained or accounted for by that
 particular attribute.
 
 Figure 2 shows just such a graph where each attribute is described by
-the proportion of choice probability each induce swhen we measure
-product choice with the varying levels available. Figure 2 suggests that
-price is the most important attribute in that in can account for almost
-half of the variation in product choice based on the range of prices
-assesed. Processor Speed accounts for about 30% of the change in product
-choice, which might have been a novel finding at the time these data
-were new but is probably not an accurate reflection today. Brand has
-very little effect on product choice; it only acounts for about 5% of
-the variation in product choice.
+the proportion of choice probability each induce when we measure product
+choice with the varying levels available. Figure 2 suggests that price
+is the most important attribute in that in can account for almost half
+of the variation in product choice based on the range of prices
+assessed. Processor Speed accounts for about 30% of the change in
+product choice, which might have been a novel finding at the time these
+data were new but is probably not an accurate reflection today. Brand
+has very little effect on product choice; it only accounts for about 5%
+of the variation in product choice.
 
 #### Part-worths Plot
 
@@ -477,10 +478,10 @@ have "positive utility" or are more likely to be chosen, while negative
 part-worths suggests that specific features are less likely to be
 chosen, all things being equal. When all the part-worths are plotting in
 order, a snapshot of the "good" and "bad" aspects of a new possible
-producht can be readily assessed in a single snapshot like that shown in
+product can be readily assessed in a single snapshot like that shown in
 Figure 3.
 
-For example, a product haveing a price of $199 has a 32% greater
+For example, a product having a price of $199 has a 32% greater
 probability of being chosen, on average, but a price of $399 for a new
 product has a 36% less change of being chosen. Specific levels of
 processor speed (2.5 GHz and 2 GHz) increase the probability of being
@@ -566,7 +567,7 @@ assessed regardless of if the specific configuration was actually seen
 by anyone. I often run all possible combinations of products and then
 rank order the results in order to identify the best and worst possible
 configurations. Table 3 shows the top 5 products with the highest
-probabiliyt of being chosen. The first product configuration (Brand A
+probability of being chosen. The first product configuration (Brand A
 tablet with 10 in screen, 32 Gb RAM, 2.5 GHz Processor, and priced at
 $199) is the product predicted to be most often chosen (approximately
 99% of the time). But the table also suggests that 10 inch products from
@@ -710,11 +711,11 @@ products are priced high (at $399) and have small screens and low RAM.
 Another extension of the power of the model to predict any combination
 of products is to simulate possible future market scenarios. In the
 class from which the data originally come, there were two additional
-scenarios that were to be predictived as if they represented possible
+scenarios that were to be predicted as if they represented possible
 scenarios of interest to the client. This is actually quite common and
-choice studies offer the oppportunity to conduct "what-if" scenarios to
-assess posssible future outcomes. In the first scenario, the client was
-intersting in what they thought was a reasonable market scenario with
+choice studies offer the opportunity to conduct "what-if" scenarios to
+assess possible future outcomes. In the first scenario, the client was
+interesting in what they thought was a reasonable market scenario with
 only 3 players in the "large" tablet market.
 
 The "client" was to be Brand A and the product configurations in the
@@ -787,4 +788,4 @@ would be the configurations for the 3 players in the market, their brand
 (A) would get about 50% of the market share, however, Brand B would be a
 strong competitor. It's likely that this scenario is determined most
 strongly by Brand C's decision to price expensively which, as we know,
-does the most to reduce the likelhiood that a product is chosen.
+does the most to reduce the likelihood that a product is chosen.
